@@ -1,0 +1,33 @@
+public class Practical8 {
+
+    public static void main(String[] args) {
+
+        testConcatVsAppend(100000);
+    }
+
+    public static void testConcatVsAppend(int iterations) {
+        String str = "";
+        long start = System.currentTimeMillis();
+        for (int i = 0; i < iterations; i++) {
+            str = str.concat("a");
+        }
+        long end = System.currentTimeMillis();
+        System.out.println("String.concat(): " + (end - start) + " ms");
+
+        StringBuffer sbuf = new StringBuffer();
+        start = System.currentTimeMillis();
+        for (int i = 0; i < iterations; i++) {
+            sbuf.append("a");
+        }
+        end = System.currentTimeMillis();
+        System.out.println("StringBuffer.append(): " + (end - start) + " ms");
+
+        StringBuilder sbuilder = new StringBuilder();
+        start = System.currentTimeMillis();
+        for (int i = 0; i < iterations; i++) {
+            sbuilder.append("a");
+        }
+        end = System.currentTimeMillis();
+        System.out.println("StringBuilder.append(): " + (end - start) + " ms");
+    }
+}
